@@ -62,6 +62,12 @@ These entries can be saved and reviewed later to improve future contributions.
 - Browser LocalStorage
 
 ---
+## Learning Goals
+
+- Improve problem understanding before implementation
+- Develop structured thinking for open-source contributions
+- Build habits required for long-term open-source involvement
+---
 
 ## 📂 Project Structure
 
