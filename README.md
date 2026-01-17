@@ -1,73 +1,137 @@
 # IssueFirst
 
-IssueFirst is a small personal tool I built to help myself understand open-source issues properly *before* starting to code.
+> **Understand the issue before you write the code.**
 
-When I began contributing to open source, I realized that my biggest problem was not writing code, but understanding the issue clearly. I often jumped into coding without fully analyzing the problem, which led to confusion, wrong implementations, and wasted time.  
-This project is my attempt to fix that habit.
-
----
-
-## 🧠 What Problem Does It Solve?
-
-Beginners usually face these problems:
-- Issues look confusing or incomplete
-- It’s hard to understand what is actually expected
-- We start coding without a clear plan
-- Mistakes are repeated across multiple contributions
-
-IssueFirst encourages **thinking before coding** by breaking an issue into simple, guided questions.
+IssueFirst is a lightweight, beginner-friendly web tool that helps developers **analyze GitHub issues properly before starting implementation**. It encourages structured thinking and converts issue understanding into a **PR‑ready Markdown document**, making open‑source contributions clearer and more effective.
 
 ---
 
-## 💡 What IssueFirst Does
+## 🚀 Why IssueFirst?
 
-IssueFirst allows a contributor to create a short “issue analysis” before starting work.
+Many beginners jump directly into coding without fully understanding:
 
-For each issue, the user can record:
-- Repository name
-- Issue link
-- Problem explanation in their own words
-- Files or areas that might be affected
-- Things that are not clear yet
-- Planned approach to solve the issue
-- What to verify after the fix
+* what the issue actually means
+* expected vs actual behavior
+* how to explain their solution to maintainers
 
-These entries can be saved and reviewed later to improve future contributions.
+This often leads to:
 
----
+* rejected PRs
+* unnecessary rework
+* poor communication with mentors
 
-## ✨ Current Features
-
-- Simple form to analyze an issue
-- Saved issue analysis entries
-- Clean and minimal user interface
-- Data stored locally in the browser (no backend required)
+**IssueFirst solves this by forcing clarity before code.**
 
 ---
 
-## 🔮 Planned Improvements
+## ✨ Key Features
 
-- Edit and delete issue entries
-- Filter entries by repository
-- Export issue analysis as Markdown
-- Backend support using Java (Servlets) in future
+* 📝 **Structured Issue Analysis**
+  Fill in repository name, issue link, and your understanding of the problem.
+
+* 💾 **Local Storage Support**
+  Your analysis is saved locally in the browser — no login, no backend.
+
+* 📤 **Export as Markdown (.md)**
+  Generates a GitHub‑style Markdown file that can be directly used in:
+
+  * Pull Requests
+  * Issue comments
+  * Proposal drafts (GSoC / WOC / Hackathons)
+
+* 🧩 **PR‑Ready Template**
+  Includes sections like:
+
+  * Problem Summary
+  * Expected vs Actual Behavior
+  * Reproduction Steps
+  * Proposed Solution
+  * PR Checklist
 
 ---
 
-## 🛠 Tech Stack
+## 🖥️ Tech Stack
 
-- HTML  
-- CSS  
-- JavaScript  
-- Browser LocalStorage
+* **HTML5** – Structure
+* **CSS3** – Styling
+* **Vanilla JavaScript** – Logic & Markdown generation
+* **Browser LocalStorage** – Data persistence
+
+(No frameworks, no backend — simple and transparent)
 
 ---
-## Learning Goals
 
-- Improve problem understanding before implementation
-- Develop structured thinking for open-source contributions
-- Build habits required for long-term open-source involvement
+## 📸 Screenshots
+
+> Add screenshots here:
+
+* Main UI
+* Filled form
+* Exported Markdown file opened in VS Code or GitHub
+
 ---
 
-## 📂 Project Structure
+## 🛠️ How to Run Locally
 
+1. Clone the repository
+
+   ```bash
+   git clone https://github.com/your-username/IssueFirst.git
+   ```
+
+2. Open the project folder
+
+3. Open `index.html` in your browser
+   *(or use VS Code Live Server)*
+
+That’s it — no installation needed.
+
+---
+
+## 🎯 Use Cases
+
+* First‑time open‑source contributors
+* Students participating in:
+
+  * GSoC
+  * Winter of Code (WOC)
+  * Hackathons
+* Developers who want cleaner PR explanations
+
+---
+
+## 🧠 How This Aligns with Open Source
+
+IssueFirst promotes:
+
+* Better communication with maintainers
+* Clear problem understanding
+* Thoughtful contribution planning
+
+This mirrors **real open‑source contribution workflows**, where understanding the issue is as important as writing the fix.
+
+---
+
+## 🔮 Future Improvements
+
+* Auto‑fetch issue title using GitHub API
+* Dark mode
+* Multiple issue history view
+* Export to PDF
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🙌 Author
+
+Developed by **Riya Jain**
+Electronics & Communication Engineering student | Open‑Source Enthusiast
+
+---
+
+> *Generated with ❤️ using IssueFirst*
