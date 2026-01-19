@@ -133,5 +133,5 @@ Developed by **Riya Jain**
 Electronics & Communication Engineering student | Open‑Source Enthusiast
 
 ---
-
+<img width="1739" height="943" alt="Screenshot 2026-01-19 180706" src="https://github.com/user-attachments/assets/15dcd153-156a-4b4f-a0bf-83047566cd9e" />
 > *Generated with ❤️ using IssueFirst*
