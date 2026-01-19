@@ -1,34 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>IssueFirst</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- React CDN -->
-    <script
-      src="https://unpkg.com/react@18/umd/react.development.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-      crossorigin
-    ></script>
-
-    <!-- Babel -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <!-- Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <div id="root"></div>
 
-    <script type="text/babel" src="script.js"></script>
+  <body>
+    <div class="container">
+      <h1>IssueFirst</h1>
+      <p class="tagline">Understand the issue before you write the code</p>
+
+      <label for="repo">Repository Name</label>
+      <input id="repo" type="text" placeholder="e.g. kubernetes/kubernetes" />
+
+      <label for="link">Issue Link</label>
+      <input id="link" type="text" placeholder="https://github.com/..." />
+
+      <label for="desc">Issue Description</label>
+      <textarea
+        id="desc"
+        placeholder="Explain the problem in your own words"
+      ></textarea>
+
+      <button class="primary-btn" onclick="saveAnalysis()">
+        Save Analysis
+      </button>
+      <button class="secondary-btn" id="exportBtn">Export as Markdown</button>
+
+      <p id="status">Analysis saved successfully!</p>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
   </body>
 </html>
