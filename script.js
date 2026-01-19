@@ -1,105 +1,96 @@
-const { useState } = React;
+function saveAnalysis() {
+  const repo = document.getElementById("repo").value.trim();
+  const link = document.getElementById("link").value.trim();
+  const desc = document.getElementById("desc").value.trim();
 
-function App() {
-  const [step, setStep] = useState(1);
-  const [form, setForm] = useState({
-    repo: "",
-    link: "",
-    desc: "",
-  });
+  if (!repo || !link || !desc) {
+    alert("Please fill all fields before saving.");
+    return;
+  }
 
-  const stepText = {
-    1: "Understand the issue clearly before writing any code.",
-    2: "Analyze the root cause, edge cases, and expected behavior.",
-    3: "Implement the solution cleanly and efficiently.",
+  const issueData = {
+    repository: repo,
+    issueLink: link,
+    description: desc,
+    savedAt: new Date().toLocaleString(),
   };
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  localStorage.setItem("issueAnalysis", JSON.stringify(issueData));
 
-  const saveAnalysis = (e) => {
-    e.preventDefault();
-
-    localStorage.setItem(
-      "issueAnalysis",
-      JSON.stringify({
-        ...form,
-        step,
-        time: new Date().toLocaleString(),
-      })
-    );
-
-    alert("Analysis saved successfully!");
-  };
-
-  return (
-    <div className="card">
-      <h1>IssueFirst</h1>
-      <p className="subtitle">Understand before you implement</p>
-
-      {/* STEP BUTTONS */}
-      <div className="steps">
-        <button
-          className={step === 1 ? "active" : ""}
-          onClick={() => setStep(1)}
-        >
-          1. Understand
-        </button>
-
-        <button
-          className={step === 2 ? "active" : ""}
-          onClick={() => setStep(2)}
-        >
-          2. Analyze
-        </button>
-
-        <button
-          className={step === 3 ? "active" : ""}
-          onClick={() => setStep(3)}
-        >
-          3. Implement
-        </button>
-      </div>
-
-      {/* INFO */}
-      <div className="info">{stepText[step]}</div>
-
-      {/* FORM */}
-      <form onSubmit={saveAnalysis}>
-        <label>Repository Name</label>
-        <input
-          name="repo"
-          placeholder="e.g. kubernetes/kubernetes"
-          onChange={handleChange}
-          required
-        />
-
-        <label>Issue Link</label>
-        <input
-          name="link"
-          placeholder="https://github.com/..."
-          onChange={handleChange}
-          required
-        />
-
-        <label>Issue Description</label>
-        <textarea
-          name="desc"
-          rows="4"
-          placeholder="What is the problem? What is expected?"
-          onChange={handleChange}
-          required
-        />
-
-        <button className="submit" type="submit">
-          Save Analysis
-        </button>
-      </form>
-
-      <div className="footer">Built for learning open-source • IssueFirst</div>
-    </div>
-  );
+  const status = document.getElementById("status");
+  status.style.display = "block";
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+// Markdown Export
+document.getElementById("exportBtn").addEventListener("click", exportMarkdown);
+
+function exportMarkdown() {
+  const savedData = localStorage.getItem("issueAnalysis");
+
+  if (!savedData) {
+    alert("No analysis found. Please save first.");
+    return;
+  }
+
+  const data = JSON.parse(savedData);
+
+  const markdownContent = `
+# Issue Analysis
+
+## Repository
+${data.repository}
+
+## Issue Link
+${data.issueLink}
+
+## Problem Summary
+${data.description}
+
+## Expected Behavior
+- Describe what should happen
+
+## Actual Behavior
+- Describe what is happening
+
+## Reproduction Steps
+- [ ] Step 1
+- [ ] Step 2
+- [ ] Step 3
+
+## Proposed Solution
+- Outline approach
+- Mention files or modules
+
+## PR Checklist
+- [ ] Issue understood clearly
+- [ ] Reproduction verified
+- [ ] Solution planned
+- [ ] Ready for implementation
+
+---
+Generated using IssueFirst
+`;
+
+  const blob = new Blob([markdownContent], { type: "text/markdown" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "issue-analysis-pr-ready.md";
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+// Load saved data on refresh
+window.onload = () => {
+  const saved = localStorage.getItem("issueAnalysis");
+
+  if (!saved) return;
+
+  const data = JSON.parse(saved);
+
+  document.getElementById("repo").value = data.repository || "";
+  document.getElementById("link").value = data.issueLink || "";
+  document.getElementById("desc").value = data.description || "";
+};
